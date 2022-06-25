@@ -1,4 +1,7 @@
 
+using BoxLib.Documents;
+using BoxLib.Fields;
+using BoxLib.Indices;
 using BoxLib.Settings;
 
 namespace BoxLib
@@ -6,6 +9,8 @@ namespace BoxLib
     public interface IBoxLib
     {
         ValueTask<BoxSettings> GetSettings();
-        ValueTask Init();
+        ValueTask<IFields> GetFields();
+        ValueTask<IIndices> GetIndices();
+        ValueTask<IDocuments> GetDocuments();
     }
 }

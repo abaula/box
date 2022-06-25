@@ -18,5 +18,10 @@ namespace BoxLib
         {
             throw new NotImplementedException();
         }
+
+        public static ValueTask<IBoxLib> Get(string settingsPath)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
