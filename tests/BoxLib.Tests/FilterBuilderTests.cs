@@ -23,7 +23,7 @@ namespace BoxLib.Tests
 
                     .And(group2 => group2
                         .GreaterThen(value1, comparer)
-                        .LessThen(value3, comparer)
+                        .LessOrEqualThen(value3, comparer)
                     )
                 )
                 .Build();

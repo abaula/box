@@ -52,21 +52,13 @@ namespace BoxLib.Tests
         [InlineData(null, null, 0)]
         public void Compare_Long_Success(long? left, long? right, int expected)
         {
-            var leftValue = left != null ? GetByteArray(left.Value) : null;
-            var rightValue = right != null ? GetByteArray(right.Value) : null;
+            var leftValue = left != null ? ByteHelper.GetByteArray(left.Value) : null;
+            var rightValue = right != null ? ByteHelper.GetByteArray(right.Value) : null;
 
             var comparer = new BinaryComparer();
 
             var actual = comparer.Compare(leftValue, rightValue);
             Assert.Equal(expected, actual);
-        }
-
-        private static byte[] GetByteArray(long value)
-        {
-            if (BitConverter.IsLittleEndian)
-                return BitConverter.GetBytes(value).Reverse().ToArray();
-
-            return BitConverter.GetBytes(value);
         }
     }
 }
