@@ -3,6 +3,7 @@ namespace BoxLib.Filters
 {
     public interface IFilter
     {
-        bool IsTrue(byte[] value);
+        bool Pass(byte[] value);
+        internal ConditionGroup RootConditionGroup { get; }
     }
 }
