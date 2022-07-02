@@ -2,7 +2,7 @@ using BoxLib.Settings;
 
 namespace BoxLib
 {
-    public static class Factory
+    public static class BoxLibFactory
     {
         public static ValueTask<BoxSettings> LoadSettings(string path)
         {

@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BoxLib.Filters
 {
     public interface IFilter
     {
-
+        bool IsTrue(byte[] value);
     }
 }
