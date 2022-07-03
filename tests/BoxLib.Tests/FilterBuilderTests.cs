@@ -79,5 +79,42 @@ namespace BoxLib.Tests
             Assert.Throws<InvalidOperationException>(() => builder.Or(_ => _.Equal(null, comparer)).Or(_ => _.Equal(null, comparer)).Build());
             Assert.Throws<InvalidOperationException>(() => builder.Or(_ => _.Equal(null, comparer)).And(_ => _.Equal(null, comparer)).Build());
         }
+
+
+        [Fact]
+        public void Filter_Pass_Success()
+        {
+            var builder = FilterFactory.Create();
+
+            var value1 = new byte[] { 1, 2, 3 };
+            var value2 = new byte[] { 1, 2, 3, 4 };
+            var value3 = new byte[] { 1, 2, 3, 5 };
+            var value4 = new byte[] { 1, 2, 3, 4, 5 };
+            var value5 = new byte[] { 1, 2, 3, 4, 6 };
+            var value5_1 = new byte[] { 1, 2, 3, 4, 6 };
+            var comparer = ComparerFactory.GetDefault();
+
+            // Is null or Value or between.
+            var filter = builder
+                .Or(group1 => group1
+
+                    .Equal(null, comparer)
+
+                    .Equal(value5, comparer)
+
+                    .And(group2 => group2
+                        .GreaterThan(value1, comparer)
+                        .LessOrEqualThan(value3, comparer)
+                    )
+                )
+                .Build();
+
+            Assert.True(filter.Pass(null));
+            Assert.False(filter.Pass(value1));
+            Assert.True(filter.Pass(value2));
+            Assert.True(filter.Pass(value3));
+            Assert.False(filter.Pass(value4));
+            Assert.True(filter.Pass(value5_1));
+        }
     }
 }
