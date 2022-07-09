@@ -1,3 +1,4 @@
+using System.Text.Json;
 using BoxLib.Settings;
 
 namespace BoxLib
@@ -9,9 +10,9 @@ namespace BoxLib
         /// </summary>
         /// <param name="path">Путь к файлу настроек.</param>
         /// <returns>Экземпляр настроек.</returns>
-        public static ValueTask<BoxSettings> LoadSettings(string path)
+        public static BoxSettings LoadSettings(string path)
         {
-            throw new NotImplementedException();
+            return JsonSerializer.Deserialize<BoxSettings>(path);
         }
 
         /// <summary>

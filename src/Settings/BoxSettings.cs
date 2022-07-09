@@ -1,8 +1,11 @@
 
 namespace BoxLib.Settings
 {
-    public class BoxSettings
+    public struct BoxSettings
     {
-        public string? StoragePath { get; set; }
+        /// <summary>
+        /// Путь к файлу с описанием структуры каталогов - box.meta.
+        /// </summary>
+        public string BoxMetaPath { get; set; }
     }
 }
