@@ -34,7 +34,9 @@ namespace BoxLib
         /// <exception cref="System.InvalidOperationException">Ошибка при создании Box.</exception>
         public static ValueTask<IBoxLib> Create(string settingsPath)
         {
-            throw new NotImplementedException();
+            var settings = LoadSettings(settingsPath);
+
+            return Create(settings);
         }
 
         /// <summary>
