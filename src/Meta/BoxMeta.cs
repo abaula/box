@@ -1,6 +1,5 @@
 namespace BoxLib.Meta
 {
-    [Serializable]
     struct BoxMeta
     {
         public string FieldMetaPath { get; set; }
