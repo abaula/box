@@ -1,4 +1,5 @@
 using System.Text.Json;
+using BoxLib.Meta;
 using BoxLib.Settings;
 
 namespace BoxLib
@@ -46,7 +47,11 @@ namespace BoxLib
         /// <returns>Ссылка на объект BoxLib.</returns>
         public static ValueTask<IBoxLib> Open(string settingsPath)
         {
-            throw new NotImplementedException();
+            var settings = LoadSettings(settingsPath);
+            var metaManager = new MetaManager(settings);
+            var boxLib = new BoxLib(metaManager);
+
+            return new ValueTask<IBoxLib>(boxLib);
         }
 
         /// <summary>
